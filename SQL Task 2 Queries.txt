@@ -1,0 +1,106 @@
+
+##Create a table named Student_table
+
+create table Student_Table(
+student_ID int, 
+primary key(student_ID),
+Stu_name text, 
+Department text, 
+Email_ID text, 
+Phone_no numeric, 
+Address text, 
+Date_of_birth date, 
+Gender text,
+Major text,
+GPA numeric,
+Grade text);
+
+##Insert values into created tables
+
+Insert into student_table values 
+(001,'Maggi','CSE','maggi@amazon.com',8973773065,'Bangalore', '07-06-1994','M','CS',8.2,'A'),
+(002,'Jane','CSE','jane@amazon.com',9873782165,'Bangalore', '07-06-1994','F','Maths',8.2,'B'),
+(003,'Rinson','EEE','rinson@amazon.com',6373882165,'Chennai', '07-06-1994','M','Maths',8.2,'C'),
+(004,'Raju','ECE','raju@amazon.com',9333723165,'Chennai', '07-06-1994','M','Maths',8.2,'E'),
+(005,'Parvthi','MECH','parvathi@amazon.com',8973778165,'Chennai', '07-06-1994','F','Maths',8.2,'D'),
+(006,'Manas','MECH','manas@amazon.com',9873232165,'Chennai', '07-06-1994','M','Maths',8.2,'D'),
+(007,'Anup','IT','anup@amazon.com',9906677865,'Chennai', '07-06-1994','F','Maths',8.2,'B'),
+(008,'Pooja','CIVIL','pooja@amazon.com',9073723875,'Chennai', '07-06-1994','F','Maths',8.2,'C'),
+(009,'Shekhar','CIVIL','shekhar@amazon.com',8679772165,'Chennai', '07-06-1994','M','Maths',8.2,'A'),
+(010,'Gowri','CIVIL','gowri@amazon.com',8283782165,'Chennai', '07-06-1994','F','Maths',8.2,'E');
+
+## Query to retrieve student information and sort based on descending grade
+
+select * from student_table
+order by "Grade" DESC;
+
+## Query to retrieve male students
+
+Select * from student_table
+where "Gender"='M';
+
+## Query to retrieve students with GPA less than 5.0
+
+select * from student_table
+where "GPA"<5.0;
+
+## Query to update student email and grade
+update student_table set "Email_ID"='maggi@amazon.com',"Grade"='E' where "Stu_name"='Maggi';
+
+
+## Query to retrieve name and age of all students who have grade 'B'
+
+Select "Stu_name", Age(now(),"Date_of_birth")as age from Student_table where "Grade"='B';
+
+## Grouping and Calculation
+
+Select "Department","Gender",AVG("GPA") as average_gpa from Student_table
+Group by "Department","Gender";
+
+## Table Renaming
+
+Alter table Student_table rename to Student_info;
+
+## Retrieving max gpa
+
+select "Stu_name" from Student_info where "GPA"=(select max("GPA")from Student_info);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
